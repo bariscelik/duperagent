@@ -392,6 +392,14 @@ void RequestPrototype::executor(QJSValue resolve, QJSValue reject)
     end(self().property("endCallback"));
 }
 
+QJSValue RequestPrototype::disableTLSCerts()
+{
+    QSslConfiguration conf = m_request->sslConfiguration();
+    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
+    m_request->setSslConfiguration(conf);
+    return self();
+}
+
 QJSValue RequestPrototype::then(QJSValue onFulfilled, QJSValue onRejected)
 {
     if (!m_promise) {

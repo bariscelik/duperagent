@@ -88,6 +88,7 @@ public:
     Q_INVOKABLE QJSValue then(QJSValue = QJSValue(), QJSValue = QJSValue());
     Q_INVOKABLE void endCallback(QJSValue, QJSValue);
     Q_INVOKABLE void executor(QJSValue, QJSValue);
+    Q_INVOKABLE QJSValue disableTLSCerts();
 
     inline QJSValue self() const { return m_self; }
 
